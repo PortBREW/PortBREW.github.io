@@ -41,6 +41,7 @@ select{min-width:150px}
 .game-info h3{margin:0 0 5px;color:#f0f4f8;font-size:16px}
 .game-info p{margin:3px 0;color:#9ba8b7;font-size:13px}
 .featured{color:#55aaff!important}
+.wip{color:#ffa755!important}
 .tag-list{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
 .tag-list span{padding:5px 10px;color:#b8c9dc;background:#20262e;border:1px solid #343d49;border-radius:4px}
 .tag-list img{height:30px;width:auto;object-fit:contain}
@@ -113,7 +114,8 @@ const games = [
         platform: "Wii U",
         developer: "java",
         github: "https://github.com/PortBREW/uMario-U",
-        featured: true
+        featured: true,
+        wip: false
     },
     {
         title: "Syobon Action U",
@@ -122,7 +124,8 @@ const games = [
         platform: "Wii U",
         developer: "java",
         github: "https://github.com/PortBREW/Syobon-Action-U",
-        featured: true
+        featured: true,
+        wip: false
     },
     {
         title: "We Become What We Behold",
@@ -131,7 +134,8 @@ const games = [
         platform: "Wii U",
         developer: "EazyEv15",
         github: "https://github.com/PortBREW/WBWWB-U",
-        featured: false
+        featured: false,
+        wip: true
     },
     {
         title: "Stella",
@@ -140,7 +144,8 @@ const games = [
         platform: "Wii U",
         developer: "BarOS22",
         github: "https://github.com/PortBREW/Stella-for-Wii-U",
-        featured: false
+        featured: false,
+        wip: true
     }
 ];
 
@@ -238,6 +243,13 @@ function renderGames() {
             featured.className = "featured";
             featured.textContent = "Featured";
             info.append(featured);
+        }
+
+        if (game.wip) {
+            const wip = document.createElement("p");
+            wip.className = "wip";
+            wip.textContent = "WIP";
+            info.append(wip);
         }
 
         card.append(image, info);
